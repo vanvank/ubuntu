@@ -1,12 +1,16 @@
-# 更新sources.list
-cp sources.list /etc/apt/sources.list
-
-
 # 免密登录的user，同时也是后面lotus_data所有者
 echo -n "请输入要设置免密登录的用户名："
 read user
 echo -n "服务器是否位于国内:(y/n): "
 read cn
+
+# 更新sources.list
+cp sources.list /etc/apt/sources.list
+
+# 设置/etc/profile
+echo "设置/etc/profile"
+sed -i '/EDITOR/d' /etc/profile
+echo 'export EDITOR=vim' >> /etc/profile
 
 echo "设置免密登录"
 echo "$user ALL = (root) NOPASSWD:ALL" | tee /etc/sudoers.d/$user
