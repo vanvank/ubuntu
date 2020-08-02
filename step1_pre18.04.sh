@@ -5,7 +5,10 @@ echo -n "服务器是否位于国内:(y/n): "
 read cn
 
 # 更新sources.list
+if [[ $cn == 'y' ]]
+then
 cp sources.list /etc/apt/sources.list
+fi
 
 # 设置/etc/profile
 echo "设置/etc/profile"
